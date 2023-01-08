@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function NavBar() {
   return (
     <>
-      <nav>
+      <nav className=''>
         <ul>
           <li>
             <strong>
@@ -12,7 +12,7 @@ export default function NavBar() {
             </strong>
           </li>
         </ul>
-        <ul>
+        <ul className=''>
           <li>
             <Link href='/news'>News</Link>
           </li>
