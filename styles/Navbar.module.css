@@ -1,0 +1,26 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  background: #000;
+  align-items: center;
+}
+
+.img{
+  padding: 1.1rem 1rem;
+  transition: ease .5s;
+}
+
+.img:hover {
+  background: gray;
+}
+
+.link {
+  padding: 1.5rem 1rem;
+  color: #fff;
+  font-size: 1.4rem;
+  transition: ease .2s;
+}
+
+.link:hover{
+  border-bottom: white 3px solid;
+}
