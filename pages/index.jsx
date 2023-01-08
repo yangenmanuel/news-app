@@ -10,21 +10,6 @@ export default function Home() {
           </p>
         </div>
       </main>
-
-      <style jsx>{`
-        .container {
-          min-height: 90vh;
-          display: grid;
-          place-items: center;
-          text-align: center
-        }
-
-        @media only screen and (min-width: 1000px) {
-          p {
-            width: 27rem;
-          }
-        }
-      `}</style>
     </>
   )
 }

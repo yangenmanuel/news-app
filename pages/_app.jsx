@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import NavBar from '../components/NavBar'
 
-import '../styles/pico.min.css'
+import '../styles/globals.css'
 
 export default function App({ Component, pageProps }) {
   return (
