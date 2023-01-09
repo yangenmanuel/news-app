@@ -1,3 +1,5 @@
+import styles from '../styles/News.module.css'
+
 export default function News({ articles }) {
   return (
     <>
@@ -5,17 +7,17 @@ export default function News({ articles }) {
 
       {articles.map((item, i) => {
         return (
-          <div key={i}>
-            <h2>{item.title}</h2>
+          <div key={i} href={item.url} className={styles.container}>
+            <h2 className={styles.title}>{item.title}</h2>
+            {console.log(item.urlToImage)}
             {/* As the app has dynamic URLs for each image, it`s impossible to use the next/image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
+              className={styles.img}
               src={item.urlToImage}
-              width={100}
-              height={100}
-              alt={item.description}
+              alt={item.source.name}
             />
-            <p>{item.description}</p>
+            <p className={styles.txt}>{item.description}</p>
           </div>
         )
       })}
