@@ -3,14 +3,31 @@ import Arrow from './Arrow'
 
 import styles from '../styles/News.module.css'
 
-export default function News({ articles }) {
+export default function News({ articles, apiKey }) {
   const [componentArticles, setComponentArticles] = useState(articles)
- 
+  
+  const handleCountry = async (e) => {
+    const res = await fetch(`https://newsapi.org/v2/top-headlines?country=${e.target.value}`, {
+      headers: {
+        Authorization: apiKey
+      }
+    })
+    const newArticles = await res.json()
+    setComponentArticles(newArticles.articles)
+  }
+
   return (
     <>
-      <h1>News</h1>
+      <form>
+        <label htmlFor="country">Country:</label>
+        <select name="country" onChange={handleCountry}>
+          <option value="br">Brazil</option>
+          <option value="gb">United Kingdom</option>
+          <option value="us">United States</option>
+        </select>
+      </form>
 
-      {componentArticles.map((item, i) => {
+      {componentArticles && componentArticles.map((item, i) => {
         return (
           <div key={i} href={item.url} className={styles.container}>
             <h2 className={styles.title}>{item.title}</h2>
