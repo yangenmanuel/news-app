@@ -20,8 +20,8 @@ export default function News({ articles, apiKey }) {
     <>
       <form>
         <label htmlFor="country">Country:</label>
-        <select name="country" onChange={handleCountry}>
-          <option value="br">Brazil</option>
+        <select className={styles.select} name="country" onChange={handleCountry}>
+          <option value="br"> Brazil</option>
           <option value="gb">United Kingdom</option>
           <option value="us">United States</option>
         </select>

@@ -45,6 +45,10 @@
   transition: ease 0.2s;
 }
 
+.select{
+  padding: 5px 10px;
+}
+
 @media (max-width: 640px) {
   .container {
     width: 18rem;
