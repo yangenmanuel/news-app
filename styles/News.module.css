@@ -45,6 +45,10 @@
   transition: ease 0.2s;
 }
 
+.form{
+  margin: 20px 40px;
+}
+
 .select{
   padding: 5px 10px;
 }
