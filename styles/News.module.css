@@ -2,7 +2,6 @@
   width: 40rem;
   margin: 0 auto;
   margin-bottom: 2rem;
-  padding: 1rem auto;
   background: #202020;
   border-radius: 10px;
 }
@@ -20,8 +19,7 @@
 .textContainer {
   display: flex;
   align-items: flex-end;
-  justify-content: center;
-  padding: 0;
+  justify-content: space-between;
 }
 
 .txt {
