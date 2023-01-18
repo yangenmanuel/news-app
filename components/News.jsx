@@ -6,7 +6,7 @@ import styles from '../styles/News.module.css'
 export default function News({ articles, apiKey, country }) {
   const [componentArticles, setComponentArticles] = useState(articles)
   const [componentCountry, setComponentCountry] = useState(country)
-  const [search, setSearch] = useState('')
+  // const [search, setSearch] = useState('')
   
   const handleCountry = async (e) => {
     setComponentCountry(e.target.value)
@@ -19,35 +19,35 @@ export default function News({ articles, apiKey, country }) {
     setComponentArticles(newArticles.articles)
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault()
 
-    const res = await fetch(`https://newsapi.org/v2/everything?language=pt&q=${search}`, {
-      headers: {
-        Authorization: apiKey
-      }
-    })
-    const newArticles = await res.json()
-    setComponentArticles(newArticles.articles)
-  }
+  //   const res = await fetch(`https://newsapi.org/v2/everything?language=pt&q=${search}`, {
+  //     headers: {
+  //       Authorization: apiKey
+  //     }
+  //   })
+  //   const newArticles = await res.json()
+  //   setComponentArticles(newArticles.articles)
+  // }
 
   return (
     <>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className="">
+      {/* <form className={styles.form} onSubmit={handleSubmit}>  */}
+        {/* <div className=""> */}
           <label htmlFor="country">Country: </label>
           <select className={styles.select} name="country" onChange={handleCountry}>
             <option value="br"> Brazil</option>
             <option value="gb">United Kingdom</option>
             <option value="us">United States</option>
           </select>
-        </div>
+        {/* </div>
 
         <div className={styles.searchContainer}>
           <input type="text" onChange={(e) => setSearch(e.target.value)}/>
           <button type="submit">Search</button>
-        </div>
-      </form>
+        </div> */}
+      {/* </form> */}
      
       {componentArticles.length > 0 && componentArticles.map((item, i) => {
         return (
