@@ -12,7 +12,7 @@ export default function Home() {
             Discover what`s happening around the world with more than 80k+
             articles with updated, controversial and excitement information!
           </p>
-          <Link href={'/news'}>
+          <Link href={'/trends'}>
             <button className={styles.btn}>Start Reading</button>
           </Link>
         </div>
