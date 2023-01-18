@@ -20,12 +20,14 @@ export default function News({ articles, apiKey }) {
 
   return (
     <>
-      <label htmlFor='country'>Country: </label>
+    {/* <div className={styles.header}> */}
+      <h1 className={styles.header}>Discover what`s happening on your country</h1>
       <select className={styles.select} name='country' onChange={handleCountry}>
         <option value='br'> Brazil</option>
         <option value='gb'>United Kingdom</option>
         <option value='us'>United States</option>
       </select>
+    {/* </div> */}
 
       {componentArticles.length > 0 &&
         componentArticles.map((item, i) => {
