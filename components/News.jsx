@@ -63,7 +63,7 @@ export default function News({ articles, apiKey, country }) {
             }
             <div className={styles.textContainer}>
               <p className={styles.txt}>{item.description}</p>
-              <a href={item.url} className={styles.btn}>
+              <a href={item.url} target='_blank' rel="noreferrer" className={styles.btn}>
                 <Arrow />  
               </a>
             </div>
