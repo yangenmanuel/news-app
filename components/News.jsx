@@ -3,12 +3,13 @@ import Arrow from './Arrow'
 
 import styles from '../styles/News.module.css'
 
-export default function News({ articles, apiKey }) {
+export default function News({ articles, apiKey, country }) {
   const [componentArticles, setComponentArticles] = useState(articles)
-  // useState
+  const [componentCountry, setComponentCountry] = useState(country)
   const [search, setSearch] = useState('')
   
   const handleCountry = async (e) => {
+    setComponentCountry(e.target.value)
     const res = await fetch(`https://newsapi.org/v2/top-headlines?country=${e.target.value}`, {
       headers: {
         Authorization: apiKey
@@ -21,7 +22,7 @@ export default function News({ articles, apiKey }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const res = await fetch(`https://newsapi.org/v2/top-headlines?country=br&q=${search}`, {
+    const res = await fetch(`https://newsapi.org/v2/everything?language=pt&q=${search}`, {
       headers: {
         Authorization: apiKey
       }

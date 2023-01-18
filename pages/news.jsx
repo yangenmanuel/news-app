@@ -1,7 +1,7 @@
 import News from '../components/News'
 
-export default function Trends({ articles, apiKey }) {
-  return <News articles={articles} apiKey={apiKey} />
+export default function Trends({ articles, apiKey, country }) {
+  return <News articles={articles} apiKey={apiKey} country={country}/>
 }
 
 // As first render whats new on users`s country
@@ -24,6 +24,6 @@ export async function getStaticProps() {
   const { articles } = await newsResponse.json()
 
   return {
-    props: { articles, apiKey},
+    props: { articles, apiKey, country},
   }
 }
