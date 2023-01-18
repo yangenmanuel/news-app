@@ -46,7 +46,11 @@
 }
 
 .form{
-  margin: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  width: 53rem;
+  border: 1px solid red;
+  margin: 10px 20px;
 }
 
 .select{
