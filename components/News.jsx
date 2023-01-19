@@ -1,11 +1,16 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
+
 import Arrow from './Arrow'
+import TrendsHeader from './TrendsHeader'
+import SearchHeader from './SearchHeader'
 
 import styles from '../styles/News.module.css'
 
 export default function News({ articles, apiKey }) {
   const [componentArticles, setComponentArticles] = useState(articles)
-
+  const router = useRouter()
+  
   const handleCountry = async (e) => {
     const res = await fetch(
       `https://newsapi.org/v2/top-headlines?country=${e.target.value}`, {
@@ -20,14 +25,7 @@ export default function News({ articles, apiKey }) {
 
   return (
     <>
-    <div className={styles.header}>
-      <h1 className={''}>Discover what`s happening on your country</h1>
-      <select className={styles.select} name='country' onChange={handleCountry}>
-        <option value='br'> Brazil</option>
-        <option value='gb'>United Kingdom</option>
-        <option value='us'>United States</option>
-      </select>
-    </div>
+      {router.pathname === '/trends' ? <TrendsHeader handleCountry={handleCountry}/> : <SearchHeader/>}
 
       {componentArticles.length > 0 &&
         componentArticles.map((item, i) => {
