@@ -1,5 +1,5 @@
-import News from "../components/news"
+import NewsComponent from "../components/NewsComponent"
 
 export default function Search () {
-  return <News />
+  return <NewsComponent />
 }

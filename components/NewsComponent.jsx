@@ -7,7 +7,7 @@ import SearchHeader from './SearchHeader'
 
 import styles from '../styles/News.module.css'
 
-export default function News({ articles, apiKey }) {
+export default function NewsComponent({ articles, apiKey }) {
   const [componentArticles, setComponentArticles] = useState(articles)
   const router = useRouter()
   

@@ -1,7 +1,7 @@
-import News from '../components/News'
+import NewsComponent from '../components/NewsComponent'
 
 export default function Trends({ articles, apiKey, country }) {
-  return <News articles={articles} apiKey={apiKey} country={country}/>
+  return <NewsComponent articles={articles} apiKey={apiKey} country={country}/>
 }
 
 // As first render whats new on users`s country
