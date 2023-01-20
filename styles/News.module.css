@@ -44,9 +44,6 @@
 }
 
 @media (max-width: 640px) {
-  .header{
-    font-size: 1rem;
-  }
   .container {
     width: 18rem;
   }
