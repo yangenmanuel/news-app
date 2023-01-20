@@ -22,7 +22,6 @@ export default function NewsComponent({ articles, apiKey }) {
     const newArticles = await res.json()
     setComponentArticles(newArticles.articles)
   }
-  console.log(componentArticles)
 
   return (
     <>
