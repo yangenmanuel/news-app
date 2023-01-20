@@ -43,6 +43,19 @@
   transition: ease 0.2s;
 }
 
+.icon {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 22rem;
+}
+
+.text{
+  opacity: .7;
+}
+
 @media (max-width: 640px) {
   .container {
     width: 18rem;
