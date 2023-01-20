@@ -27,9 +27,9 @@ export default function News({ articles, apiKey }) {
     <>
       {router.pathname === '/trends' ? <TrendsHeader handleCountry={handleCountry}/> : <SearchHeader/>}
 
-      {componentArticles
-       ? componentArticles.map((item, i) => {
-          return (
+      {componentArticles === 'undefined' ?
+        componentArticles.map((item, i) => {
+        return (
             <div key={i} href={item.url} className={styles.container}>
               <h2 className={styles.title}>{item.title}</h2>
               {/* As the app has dynamic URLs for each image, it`s impossible to use the next/image */}
@@ -55,7 +55,7 @@ export default function News({ articles, apiKey }) {
           )
 
         })
-      : console.log('nada')
+      : <h1>Nothing to show</h1>
       }
     </>
   )
