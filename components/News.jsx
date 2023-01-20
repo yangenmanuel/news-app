@@ -27,8 +27,8 @@ export default function News({ articles, apiKey }) {
     <>
       {router.pathname === '/trends' ? <TrendsHeader handleCountry={handleCountry}/> : <SearchHeader/>}
 
-      {componentArticles.length > 0 &&
-        componentArticles.map((item, i) => {
+      {componentArticles
+       ? componentArticles.map((item, i) => {
           return (
             <div key={i} href={item.url} className={styles.container}>
               <h2 className={styles.title}>{item.title}</h2>
@@ -53,7 +53,10 @@ export default function News({ articles, apiKey }) {
               </div>
             </div>
           )
-        })}
+
+        })
+      : console.log('nada')
+      }
     </>
   )
 }

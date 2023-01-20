@@ -1,3 +1,11 @@
+import styles from '../styles/SearchHeader.module.css'
+
 export default function SearchHeader () {
-  return <h1>Search!</h1>
+  return <div className={styles.header}>
+    <h1>What you are interested in?</h1>
+    <form>
+      <input type="text" placeholder='Look for something'/>
+      <button type='submit'>🔎</button>
+    </form>
+  </div>
 }

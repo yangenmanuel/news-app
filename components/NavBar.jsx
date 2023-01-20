@@ -13,6 +13,7 @@ export default function NavBar() {
 
         <div className={styles.linkList}>
             <Link className={styles.link} href={'/trends'}>Trends 🔥</Link>
+            <Link className={styles.link} href={'/search'}>Search 🔎</Link>
             <Link className={styles.link} href={'/about'}>About</Link>
         </div>
       </nav>
