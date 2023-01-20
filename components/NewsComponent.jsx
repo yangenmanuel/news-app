@@ -22,14 +22,15 @@ export default function NewsComponent({ articles, apiKey }) {
     const newArticles = await res.json()
     setComponentArticles(newArticles.articles)
   }
+  console.log(componentArticles)
 
   return (
     <>
       {router.pathname === '/trends' ? <TrendsHeader handleCountry={handleCountry}/> : <SearchHeader/>}
 
-      {componentArticles === 'undefined' ?
-        componentArticles.map((item, i) => {
-        return (
+      {typeof componentArticles !== 'undefined' 
+      ? componentArticles.map((item, i) => {
+         return (
             <div key={i} href={item.url} className={styles.container}>
               <h2 className={styles.title}>{item.title}</h2>
               {/* As the app has dynamic URLs for each image, it`s impossible to use the next/image */}
