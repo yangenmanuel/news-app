@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 
 import styles from '../styles/SearchHeader.module.css'
-import MagnifyingGlass from './MagnifyingGlass'
+import MagnifyingGlass from './icons/MagnifyingGlass'
 
 export default function SearchHeader({ handleSearch, handleSubmit }) {
   const inputRef = useRef()  
