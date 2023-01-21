@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
+import { apiKey } from '../lib/constants'
+
 import Arrow from './icons/Arrow'
 import TrendsHeader from './TrendsHeader'
 import SearchHeader from './SearchHeader'
 
 import styles from '../styles/News.module.css'
 
-export default function NewsComponent({ articles, apiKey }) {
+export default function NewsComponent({ articles }) {
   const [componentArticles, setComponentArticles] = useState(articles)
   const [search, setSearch] = useState('')
   const router = useRouter()
@@ -16,22 +18,28 @@ export default function NewsComponent({ articles, apiKey }) {
     const res = await fetch(
       `https://newsapi.org/v2/top-headlines?country=${e.target.value}`, {
         headers: {
-          Authorization: apiKey,
+          Authorization: await apiKey,
         },
       }
-    )
+      )
+      const newArticles = await res.json()
+      setComponentArticles(newArticles.articles)
+    }
+    
+    const handleSearch = (e) => {
+      setSearch(e.target.value)
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    
+    const res = await fetch(`https://newsapi.org/v2/everything?q=${search}`, {
+      headers: {
+        Authorization: await apiKey
+      }
+    })
     const newArticles = await res.json()
     setComponentArticles(newArticles.articles)
-  }
-
-  const handleSearch = (e) => {
-    setSearch(e.target.value)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    console.log(search)
   }
 
   return (
@@ -40,9 +48,9 @@ export default function NewsComponent({ articles, apiKey }) {
         ? <TrendsHeader handleCountry={handleCountry}/> 
         : <SearchHeader handleSearch={handleSearch} handleSubmit={handleSubmit} />}
 
-      {typeof componentArticles !== 'undefined' 
+      {typeof componentArticles !== 'undefined' && componentArticles.length !== 0
       ? componentArticles.map((item, i) => {
-         return (
+        return (
             <div key={i} href={item.url} className={styles.container}>
               <h2 className={styles.title}>{item.title}</h2>
               {/* As the app has dynamic URLs for each image, it`s impossible to use the next/image */}

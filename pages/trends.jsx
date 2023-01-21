@@ -1,7 +1,7 @@
 import NewsComponent from '../components/NewsComponent'
 
-export default function Trends({ articles, apiKey, country }) {
-  return <NewsComponent articles={articles} apiKey={apiKey} country={country}/>
+export default function Trends({ articles }) {
+  return <NewsComponent articles={articles} />
 }
 
 // As first render whats new on users`s country
@@ -14,16 +14,15 @@ export async function getStaticProps() {
 
   const { country } = await ipResponse.json()
   const query = `top-headlines?country=${country.toLowerCase()}`
-  const apiKey = process.env.API_KEY
 
   const newsResponse = await fetch(`https://newsapi.org/v2/${query}`, {
     headers: {
-      Authorization: apiKey,
+      Authorization: process.env.API_KEY,
     },
   })
   const { articles } = await newsResponse.json()
 
   return {
-    props: { articles, apiKey, country},
+    props: { articles },
   }
 }
