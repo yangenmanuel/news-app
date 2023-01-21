@@ -9,6 +9,7 @@ import styles from '../styles/News.module.css'
 
 export default function NewsComponent({ articles, apiKey }) {
   const [componentArticles, setComponentArticles] = useState(articles)
+  const [search, setSearch] = useState('')
   const router = useRouter()
   
   const handleCountry = async (e) => {
@@ -23,9 +24,13 @@ export default function NewsComponent({ articles, apiKey }) {
     setComponentArticles(newArticles.articles)
   }
 
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
+  }
+
   return (
     <>
-      {router.pathname === '/trends' ? <TrendsHeader handleCountry={handleCountry}/> : <SearchHeader/>}
+      {router.pathname === '/trends' ? <TrendsHeader handleCountry={handleCountry}/> : <SearchHeader handleSearch={handleSearch} />}
 
       {typeof componentArticles !== 'undefined' 
       ? componentArticles.map((item, i) => {
