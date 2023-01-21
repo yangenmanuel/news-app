@@ -1,6 +1,6 @@
 import styles from '../styles/SearchHeader.module.css'
 
-export default function SearchHeader() {
+export default function SearchHeader({handleSearch}) {
   return (
     <div className={styles.header}>
       <h1>What you are interested in?</h1>
@@ -24,6 +24,7 @@ export default function SearchHeader() {
           </svg>
         </button>
         <input
+          onChange={handleSearch}
           className={styles.input}
           type='search'
           placeholder='Search for everything'
