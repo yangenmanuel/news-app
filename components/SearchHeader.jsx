@@ -1,10 +1,10 @@
 import styles from '../styles/SearchHeader.module.css'
 
-export default function SearchHeader({handleSearch}) {
+export default function SearchHeader({ handleSearch, handleSubmit }) {
   return (
     <div className={styles.header}>
       <h1>What you are interested in?</h1>
-      <form className={styles.formContainer}>
+      <form className={styles.formContainer} onSubmit={handleSubmit}>
         <button type='submit' className={styles.btn}>
           <svg
             xmlns='http://www.w3.org/2000/svg'

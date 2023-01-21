@@ -28,9 +28,17 @@ export default function NewsComponent({ articles, apiKey }) {
     setSearch(e.target.value)
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    console.log(search)
+  }
+
   return (
     <>
-      {router.pathname === '/trends' ? <TrendsHeader handleCountry={handleCountry}/> : <SearchHeader handleSearch={handleSearch} />}
+      {router.pathname === '/trends' 
+        ? <TrendsHeader handleCountry={handleCountry}/> 
+        : <SearchHeader handleSearch={handleSearch} handleSubmit={handleSubmit} />}
 
       {typeof componentArticles !== 'undefined' 
       ? componentArticles.map((item, i) => {
