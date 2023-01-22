@@ -1,14 +1,17 @@
 import NewsComponent from '../components/NewsComponent'
 
-export default function Trends({ articles }) {
-  return <NewsComponent articles={articles} />
+export default function Trends({ articles, newsApiKey }) {
+  return <NewsComponent articles={articles} newsApiKey={newsApiKey}/>
 }
 
 // As first render whats new on users`s country
 export async function getStaticProps() {
+  const newsApiKey = process.env.API_KEY
+  const ipInfoToken = process.env.IPINFO_TOKEN
+
   const ipResponse = await fetch('https://ipinfo.io', {
     headers: {
-      Authorization: `Bearer ${process.env.IPINFO_TOKEN}`,
+      Authorization: `Bearer ${ipInfoToken}`,
     },
   })
 
@@ -17,12 +20,12 @@ export async function getStaticProps() {
 
   const newsResponse = await fetch(`https://newsapi.org/v2/${query}`, {
     headers: {
-      Authorization: process.env.API_KEY,
+      Authorization: newsApiKey,
     },
   })
   const { articles } = await newsResponse.json()
 
   return {
-    props: { articles },
+    props: { articles, newsApiKey },
   }
 }

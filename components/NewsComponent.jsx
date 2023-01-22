@@ -1,16 +1,14 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
-import { apiKey } from '../lib/constants'
-
 import Arrow from './icons/Arrow'
 import TrendsHeader from './TrendsHeader'
 import SearchHeader from './SearchHeader'
 
 import styles from '../styles/News.module.css'
-import NotFound from './icons/NotFound'
+import Message from './Message'
 
-export default function NewsComponent({ articles }) {
+export default function NewsComponent({ articles, newsApiKey }) {
   const [componentArticles, setComponentArticles] = useState(articles)
   const [search, setSearch] = useState('')
   const router = useRouter()
@@ -19,7 +17,7 @@ export default function NewsComponent({ articles }) {
     const res = await fetch(
       `https://newsapi.org/v2/top-headlines?country=${e.target.value}`, {
         headers: {
-          Authorization: await apiKey,
+          Authorization: newsApiKey,
         },
       }
       )
@@ -36,7 +34,7 @@ export default function NewsComponent({ articles }) {
     
     const res = await fetch(`https://newsapi.org/v2/everything?q=${search}`, {
       headers: {
-        Authorization: await apiKey
+        Authorization: newsApiKey
       }
     })
     const newArticles = await res.json()
@@ -75,13 +73,9 @@ export default function NewsComponent({ articles }) {
               </div>
             </div>
           )
-
         })
       : (
-       <div className={styles.icon}>
-        <NotFound />
-        <p className={styles.text}>Nothing to show yet 🤷</p>
-       </div> 
+       <Message />
       )
       }
     </>
