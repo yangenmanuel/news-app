@@ -1,4 +1,4 @@
-import styles from '../styles/TrendsHeader.module.css'
+import styles from '../styles/Header.module.css'
 
 export default function TrendsHeader ({handleCountry}) {
   return (
