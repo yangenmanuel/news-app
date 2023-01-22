@@ -47,7 +47,7 @@ export default function NewsComponent({ articles, newsApiKey }) {
         ? <TrendsHeader handleCountry={handleCountry}/> 
         : <SearchHeader handleSearch={handleSearch} handleSubmit={handleSubmit} />}
 
-      {typeof componentArticles !== 'undefined' && componentArticles.length !== 0
+      {componentArticles && componentArticles.length !== 0
       ? componentArticles.map((item, i) => {
         return (
             <div key={i} href={item.url} className={styles.container}>
@@ -74,9 +74,7 @@ export default function NewsComponent({ articles, newsApiKey }) {
             </div>
           )
         })
-      : (
-       <Message />
-      )
+      : <Message />
       }
     </>
   )

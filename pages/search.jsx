@@ -1,7 +1,7 @@
 import NewsComponent from "../components/NewsComponent"
 
 export default function Search ({ newsApiKey }) {
-  return <NewsComponent newsApiKey={newsApiKey}/>
+  return <NewsComponent newsApiKey={newsApiKey} articles={[]}/>
 }
 
 export function getStaticProps () {
