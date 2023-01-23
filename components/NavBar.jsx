@@ -1,9 +1,11 @@
-import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import styles from '../styles/Navbar.module.css'
 
 export default function NavBar() {
+  const { pathname } = useRouter()
+  
   return (
     <>
       <nav className={styles.nav}>
@@ -13,7 +15,9 @@ export default function NavBar() {
 
         <div className={styles.linkList}>
             <Link className={styles.link} href={'/trends'}>Trends 🔥</Link>
-            <Link className={styles.link} href={'/search'}>Search 🔎</Link>
+            <Link className={styles.link}
+            //  style={{borderBottom: pathname === '/search' ? '3px solid white' : 'none'}} 
+             href={'/search'}>Search 🔎</Link>
             <Link className={styles.link} href={'/about'}>About</Link>
         </div>
       </nav>

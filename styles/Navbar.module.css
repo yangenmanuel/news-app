@@ -23,7 +23,7 @@
 }
 
 .link:hover{
-  border-bottom: white 3px solid;
+  border-bottom: 3px solid white;
 }
 
 @media (max-width: 640px){
