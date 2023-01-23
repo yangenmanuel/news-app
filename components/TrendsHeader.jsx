@@ -1,6 +1,7 @@
 import styles from '../styles/Header.module.css'
+import PropTypes from 'prop-types'
 
-export default function TrendsHeader ({handleCountry}) {
+export default function TrendsHeader ({ handleCountry }) {
   return (
     <div className={styles.header}>
       <h1>Discover what`s happening on your country</h1>
@@ -11,4 +12,8 @@ export default function TrendsHeader ({handleCountry}) {
       </select>
     </div>
   )
+}
+
+TrendsHeader.propTypes = {
+  handleCountry: PropTypes.func.isRequired
 }

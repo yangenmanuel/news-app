@@ -1,4 +1,5 @@
 import NewsComponent from '../components/NewsComponent'
+import PropTypes from 'prop-types'
 
 export default function Trends({ articles, newsApiKey }) {
   return <NewsComponent articles={articles} newsApiKey={newsApiKey}/>
@@ -28,4 +29,9 @@ export async function getStaticProps() {
   return {
     props: { articles, newsApiKey },
   }
+}
+
+Trends.propTypes = {
+  articles: PropTypes.arrayOf(PropTypes.object).isRequired,
+  newsApiKey: PropTypes.string.isRequired
 }

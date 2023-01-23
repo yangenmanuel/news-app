@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
+import PropTypes from 'prop-types'
+
 import Arrow from './icons/Arrow'
 import TrendsHeader from './TrendsHeader'
 import SearchHeader from './SearchHeader'
@@ -78,4 +80,9 @@ export default function NewsComponent({ articles, newsApiKey }) {
       }
     </>
   )
+}
+
+NewsComponent.propTypes = {
+  newsApiKey: PropTypes.string.isRequired,
+  articles: PropTypes.arrayOf(PropTypes.object).isRequired,
 }

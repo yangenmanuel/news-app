@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import NavBar from '../components/NavBar'
+import PropTypes from 'prop-types'
 
 import '../styles/globals.css'
 
@@ -16,4 +17,9 @@ export default function App({ Component, pageProps }) {
       <Component {...pageProps} />
     </>
   )
+}
+
+App.propTypes = { 
+  Component: PropTypes.func.isRequired,
+  pageProps: PropTypes.object.isRequired
 }

@@ -1,5 +1,7 @@
 import { useRef, useEffect } from 'react'
 
+import PropTypes from 'prop-types'
+
 import styles from '../styles/Header.module.css'
 import MagnifyingGlass from './icons/MagnifyingGlass'
 
@@ -27,4 +29,9 @@ export default function SearchHeader({ handleSearch, handleSubmit }) {
       </form>
     </div>
   )
+}
+
+SearchHeader.propTypes = {
+  handleSearch: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 }
