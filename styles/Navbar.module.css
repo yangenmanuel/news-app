@@ -6,7 +6,7 @@
 }
 
 .img{
-  padding: 1rem 1rem;
+  padding: .8rem 1rem;
   transition: ease .5s;
   font-size: 1.5rem;
 }
@@ -16,14 +16,15 @@
 }
 
 .link {
-  padding: 1.5rem 1rem;
+  padding: 1.35rem 1rem;
   color: #fff;
   font-size: 1.2rem;
   transition: ease .2s;
 }
 
 .link:hover{
-  border-bottom: 3px solid white;
+  opacity: .7;
+  background: #353535;
 }
 
 @media (max-width: 640px){

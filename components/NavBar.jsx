@@ -14,11 +14,18 @@ export default function NavBar() {
           </Link>
 
         <div className={styles.linkList}>
-            <Link className={styles.link} href={'/trends'}>Trends 🔥</Link>
+            <Link className={styles.link} 
+            style={{borderBottom: pathname === '/trends' ? '3px solid white' : 'none'}}
+            href={'/trends'}>Trends 🔥</Link>
+
             <Link className={styles.link}
-            //  style={{borderBottom: pathname === '/search' ? '3px solid white' : 'none'}} 
+             style={{borderBottom: pathname === '/search' ? '3px solid white' : 'none'}} 
              href={'/search'}>Search 🔎</Link>
-            <Link className={styles.link} href={'/about'}>About</Link>
+            
+            <Link className={styles.link} 
+            style={{borderBottom: pathname === '/about' ? '3px solid white' : 'none'}}
+            href={'/about'}>About
+            </Link>
         </div>
       </nav>
     </>
