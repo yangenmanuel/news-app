@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import useArticles from '../hooks/useArticles'
 
 import PropTypes from 'prop-types'
 
@@ -15,6 +16,9 @@ export default function NewsComponent({ articles, newsApiKey }) {
   const [search, setSearch] = useState('')
   const router = useRouter()
   
+  const { art } = useArticles()
+  console.log(art)
+
   const handleCountry = async (e) => {
     const res = await fetch(
       `https://newsapi.org/v2/top-headlines?country=${e.target.value}`, {
