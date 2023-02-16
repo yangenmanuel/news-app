@@ -1,6 +1,8 @@
 export default async function getArticles (req, res) {
-  const response = await fetch('https://newsapi.org/v2/everything?q=messi', {
+
+  const response = await fetch(`https://newsapi.org/v2/${decodeURIComponent(req.query.url)}`, {
     headers: {
+      "Content-type": 'application/json',
       Authorization: process.env.API_KEY
     }
   })

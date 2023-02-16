@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-import useArticles from '../hooks/useArticles'
+// import useArticles from '../hooks/useArticles'
 
 import PropTypes from 'prop-types'
 
@@ -11,39 +11,27 @@ import SearchHeader from './SearchHeader'
 import styles from '../styles/News.module.css'
 import Message from './Message'
 
-export default function NewsComponent({ articles, newsApiKey }) {
+export default function NewsComponent({ articles }) {
   const [componentArticles, setComponentArticles] = useState(articles)
   const [search, setSearch] = useState('')
   const router = useRouter()
   
-  const { art } = useArticles()
-  console.log(art)
-
   const handleCountry = async (e) => {
-    const res = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=${e.target.value}`, {
-        headers: {
-          Authorization: newsApiKey,
-        },
-      }
-      )
-      const newArticles = await res.json()
-      setComponentArticles(newArticles.articles)
-    }
+    const res = await fetch(`/api/getArticles?url=top-headlines?country=${e.target.value}`)
+    const newArticles = await res.json()
+
+    setComponentArticles(newArticles.articles)
+  }
     
-    const handleSearch = (e) => {
-      setSearch(e.target.value)
+  const handleSearch = (e) => {
+    setSearch(e.target.value)
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
-    const res = await fetch(`https://newsapi.org/v2/everything?q=${search}`, {
-      headers: {
-        Authorization: newsApiKey
-      }
-    })
+    const res = await fetch(`api/getArticles?url=everything?q=${search}`)
     const newArticles = await res.json()
+
     setComponentArticles(newArticles.articles)
   }
 
