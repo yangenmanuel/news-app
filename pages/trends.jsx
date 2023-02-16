@@ -7,8 +7,6 @@ export default function Trends({ articles }) {
 
 // As first render whats new on users`s country
 export async function getStaticProps() {
-  const newsApiKey = process.env.API_KEY
-
   const countryResponse = await fetch(`http://localhost:3000/api/getCountry`)
   const { country } = await countryResponse.json()
 
@@ -16,13 +14,13 @@ export async function getStaticProps() {
 
   const newsResponse = await fetch(`http://localhost:3000/api/getArticles?url=${encodeURIComponent(url)}`, {
     headers: {
-      Authorization: newsApiKey,
+      Authorization: process.env.API_KEY
     },
   })
   const { articles } = await newsResponse.json()
 
   return {
-    props: { articles, newsApiKey },
+    props: { articles },
   }
 }
 
