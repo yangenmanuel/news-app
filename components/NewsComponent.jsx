@@ -1,45 +1,28 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
-// import useArticles from '../hooks/useArticles'
-
 import PropTypes from 'prop-types'
 
 import Arrow from './icons/Arrow'
 import TrendsHeader from './TrendsHeader'
 import SearchHeader from './SearchHeader'
-
-import styles from '../styles/News.module.css'
 import Message from './Message'
 
+import styles from '../styles/News.module.css'
+import { handleSubmit, handleCountry } from '../lib/handlers'
 export default function NewsComponent({ articles }) {
   const [componentArticles, setComponentArticles] = useState(articles)
   const [search, setSearch] = useState('')
   const router = useRouter()
-  
-  const handleCountry = async (e) => {
-    const res = await fetch(`/api/getArticles?url=top-headlines?country=${e.target.value}`)
-    const newArticles = await res.json()
-
-    setComponentArticles(newArticles.articles)
-  }
-    
-  const handleSearch = (e) => {
-    setSearch(e.target.value)
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const res = await fetch(`api/getArticles?url=everything?q=${search}`)
-    const newArticles = await res.json()
-
-    setComponentArticles(newArticles.articles)
-  }
 
   return (
     <>
       {router.pathname === '/trends' 
-        ? <TrendsHeader handleCountry={handleCountry}/> 
-        : <SearchHeader handleSearch={handleSearch} handleSubmit={handleSubmit} />}
+        ? <TrendsHeader handleCountry={(e) => handleCountry(e, setComponentArticles)}/> 
+        
+        : <SearchHeader 
+        handleSearch={(e) => setSearch(e.target.value)} 
+        handleSubmit={(e) => handleSubmit(e, setComponentArticles, search)} 
+        />}
 
       {componentArticles && componentArticles.length !== 0
       ? componentArticles.map((item, i) => {
@@ -75,6 +58,6 @@ export default function NewsComponent({ articles }) {
 }
 
 NewsComponent.propTypes = {
-  newsApiKey: PropTypes.string.isRequired,
+  // newsApiKey: PropTypes.string.isRequired,
   articles: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
