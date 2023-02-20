@@ -2,13 +2,12 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 
-// import Arrow from './icons/Arrow'
 import TrendsHeader from './TrendsHeader'
 import SearchHeader from './SearchHeader'
 import Message from './Message'
+import Article from './Article'
 
 import { handleSubmit, handleCountry } from '../lib/handlers'
-import Article from './Article'
 export default function NewsComponent({ articles }) {
   const [componentArticles, setComponentArticles] = useState(articles)
   const [search, setSearch] = useState('')
