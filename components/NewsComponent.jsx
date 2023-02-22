@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import TrendsHeader from './TrendsHeader'
 import SearchHeader from './SearchHeader'
 import Message from './Message'
-import Article from './Article'
+import LazyArticles from './LazyArticles'
 
 import { handleSubmit, handleCountry } from '../lib/handlers'
 export default function NewsComponent({ articles }) {
@@ -26,7 +26,7 @@ export default function NewsComponent({ articles }) {
       {componentArticles && componentArticles.length !== 0
       ? componentArticles.map((item, i) => {
         return (
-            <Article item={item} key={i}/>
+            <LazyArticles item={item} key={i}/>
           )
         })
       : <Message />
