@@ -7,21 +7,17 @@ import SearchHeader from './SearchHeader'
 import Message from './Message'
 import LazyArticles from './LazyArticles'
 
-import { handleSubmit, handleCountry } from '../lib/handlers'
+import { handleCountry } from '../lib/handlers'
 export default function NewsComponent({ articles }) {
   const [componentArticles, setComponentArticles] = useState(articles)
-  const [search, setSearch] = useState('')
+  // const [search, setSearch] = useState('')
   const router = useRouter()
 
   return (
     <>
       {router.pathname === '/trends' 
         ? <TrendsHeader handleCountry={(e) => handleCountry(e, setComponentArticles)}/> 
-        
-        : <SearchHeader 
-        handleSearch={(e) => setSearch(e.target.value)} 
-        handleSubmit={(e) => handleSubmit(e, setComponentArticles, search)} 
-        />}
+        : <SearchHeader setComponentArticles={setComponentArticles}/>}
 
       {componentArticles && componentArticles.length !== 0
       ? componentArticles.map((item, i) => {
