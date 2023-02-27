@@ -7,12 +7,16 @@ export default function Trends({ articles }) {
 
 // As first render whats new on users`s country
 export async function getStaticProps() {
-  const countryResponse = await fetch(`http://localhost:3000/api/getCountry`)
+  const countryResponse = await fetch('https://ipinfo.io', {
+    headers: {
+      Authorization: `Bearer ${process.env.IPINFO_TOKEN}`,
+    },
+  })
   const { country } = await countryResponse.json()
 
   const url = `top-headlines?country=${country.toLowerCase()}`
 
-  const newsResponse = await fetch(`http://localhost:3000/api/getArticles?url=${encodeURIComponent(url)}`, {
+  const newsResponse = await fetch(`https://newsapi.org/v2/${decodeURIComponent(url)}`, {
     headers: {
       Authorization: process.env.API_KEY
     },
