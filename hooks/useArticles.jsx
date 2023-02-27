@@ -9,5 +9,5 @@ export default function useArticles (url) {
       .then(res => setArticles(res))
   }, [url])
 
-  return { art: articles }
+  return { articles }
 }

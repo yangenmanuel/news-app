@@ -7,7 +7,6 @@ import SearchHeader from './SearchHeader'
 import Message from './Message'
 import LazyArticles from './LazyArticles'
 
-import { handleCountry } from '../lib/handlers'
 export default function NewsComponent({ articles }) {
   const [componentArticles, setComponentArticles] = useState(articles)
   // const [search, setSearch] = useState('')
@@ -16,7 +15,7 @@ export default function NewsComponent({ articles }) {
   return (
     <>
       {router.pathname === '/trends' 
-        ? <TrendsHeader handleCountry={(e) => handleCountry(e, setComponentArticles)}/> 
+        ? <TrendsHeader setComponentArticles={setComponentArticles}/> 
         : <SearchHeader setComponentArticles={setComponentArticles}/>}
 
       {componentArticles && componentArticles.length !== 0
